@@ -11,7 +11,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -22,8 +21,6 @@ public class CalculatorSteps
 	private Calculator calculator;
 	private List<Integer> numbers;
 	private int sum;
-	private Map<String, Integer> priceList;
-	private int totalSum;
 
 
 	@Before
@@ -154,30 +151,5 @@ public class CalculatorSteps
 	public void should_I_get( int expectedSum )
 	{
 		assertEquals( expectedSum, sum );
-	}
-
-
-	@Given( "^the price list for a coffee shop$" )
-	public void the_price_list_for_a_coffee_shop( Map<String, Integer> priceList )
-	{
-		this.priceList = priceList;
-	}
-
-
-	@When( "^I order (\\d+) (.*) and (\\d+) (.*)$" )
-	public void i_order_coffee_and_donut( int numberOfFirstItems, String firstItem, int numberOfSecondItems, String secondItem )
-	{
-		int firstPrice = priceList.get( firstItem );
-		int secondPrice = priceList.get( secondItem );
-
-		totalSum += firstPrice * numberOfFirstItems;
-		totalSum += secondPrice * numberOfSecondItems;
-	}
-
-
-	@Then( "^should I pay (\\d+)$" )
-	public void should_I_pay( int expectedCost )
-	{
-		assertEquals( totalSum, expectedCost );
 	}
 }
