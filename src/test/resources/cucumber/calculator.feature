@@ -34,12 +34,30 @@ Feature: Calculator
     When I modulus 27 by 5
     Then the result should be 2
 
-  Scenario Outline: Division Data Table
-    Given I want to perform a data table calculation
-    When I divide <Numerator> by <Divisor>
-    Then the result should be <Result>
-    Examples:
-      | Numerator | Divisor | Result |
-      | 100       | 2       | 50     |
-      | 100       | 4       | 25     |
-      | 1000      | 200     | 5      |
+#  Scenario Outline: Division Data Table
+#    Given I want to perform a data table calculation
+#    When I divide this <Numerator> by <Divisor>
+#    Then the result should be <Result>
+#    Examples:
+#      | Numerator | Divisor | Result |
+#      | 100       | 2       | 50     |
+#      | 100       | 4       | 25     |
+#      | 1000      | 200     | 5      |
+
+  Scenario: The sum of a list of numbers should be calculated
+    Given a list of numbers
+      | 17   |
+      | 42   |
+      | 4711 |
+    When I summarize them
+    Then should I get 4770
+
+Feature: Cucumber can convert a Gherkin table to to a map.
+  This an example of a simple price list.
+
+  Scenario: A price list can be represented as price per item
+    Given the price list for a coffee shop
+      | coffee | 1 |
+      | donut  | 2 |
+    When I order 1 coffee and 1 donut
+    Then should I pay 3

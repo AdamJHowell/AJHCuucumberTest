@@ -9,23 +9,39 @@
 	<name>AJHCucumberTest</name>
 	<url>http://maven.apache.org</url>
 
+
+	<properties>
+		<cucumber.version>3.0.2</cucumber.version>
+		<gherkin.version>5.0.0</gherkin.version>
+		<junit.version>4.12</junit.version>
+		<datatable.version>1.0.3</datatable.version>
+		<tag-expressions.version>1.1.1</tag-expressions.version>
+		<cucumber-expressions.version>5.0.19</cucumber-expressions.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
-			<groupId>info.cukes</groupId>
+			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>1.1.8</version>
+			<version>${cucumber.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>info.cukes</groupId>
+			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
-			<version>1.1.8</version>
+			<version>${cucumber.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.cucumber/datatable -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>datatable</artifactId>
+			<version>1.1.2</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
