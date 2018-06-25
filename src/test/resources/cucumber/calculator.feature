@@ -52,3 +52,17 @@ Feature: Calculator
     When I summarize them
     Then should I get 4770
 
+  Scenario: A price list can be represented as price per item
+    Given the price list for a donut shop
+      | cocoa  | 1 |
+      | donut  | 2 |
+    When I order 1 cocoa and 1 donut
+    Then should I pay 3
+
+  Scenario: An international donut shop must handle currencies
+    Given the price list for an international donut shop
+      | product | currency | perUnitPrice |
+      | cocoa   | EUR      | 1            |
+      | donut   | SEK      | 18           |
+    When I choose 1 cocoa and 1 donut
+    Then should I pay 1 EUR and 18 SEK

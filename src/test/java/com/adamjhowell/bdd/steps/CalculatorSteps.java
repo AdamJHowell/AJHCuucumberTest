@@ -1,6 +1,7 @@
 package com.adamjhowell.bdd.steps;
 // The package for the Steps file, and the Tests file, need to be in "Test Sources Root" folder.
 
+
 // Import the class to test, based on the "Sources Root" folder.
 
 
@@ -10,7 +11,9 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -19,8 +22,6 @@ import static org.junit.Assert.assertNotNull;
 public class CalculatorSteps
 {
 	private Calculator calculator;
-	private List<Integer> numbers;
-	private int sum;
 
 
 	@Before
@@ -127,8 +128,12 @@ public class CalculatorSteps
 //	}
 
 
+	private List<Integer> numbers;
+	private int sum;
+
+
 	@Given( "^a list of numbers$" )
-	public void a_list_of_numbers( List<Integer> numbers )
+	public void aListOfNumbers( List<Integer> numbers )
 	{
 		// For automatic transformation, change DataTable to one of List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.
 		// Where E, K, and V must be a scalar (String, Integer, Date, enum etc).
@@ -137,7 +142,7 @@ public class CalculatorSteps
 
 
 	@When( "^I summarize them$" )
-	public void i_summarize_them()
+	public void iSummarizeThem()
 	{
 		sum = 0;
 		for( Integer number : numbers )
@@ -148,8 +153,89 @@ public class CalculatorSteps
 
 
 	@Then( "^should I get (\\d+)$" )
-	public void should_I_get( int expectedSum )
+	public void shouldIGet( int expectedSum )
 	{
 		assertEquals( expectedSum, sum );
+	}
+
+
+	private Map<String, Integer> priceList;
+	private int totalSum;
+
+
+	@Given( "^the price list for a donut shop$" )
+	public void thePriceListForADonutShop( Map<String, Integer> priceList )
+	{
+		this.priceList = priceList;
+	}
+
+
+	@When( "^I order (\\d+) (.*) and (\\d+) (.*)$" )
+	public void iOrderCoffeeAndDonut( int numberOfFirstItems, String firstItem, int numberOfSecondItems, String secondItem )
+	{
+		int firstPrice = priceList.get( firstItem );
+		int secondPrice = priceList.get( secondItem );
+
+		totalSum += firstPrice * numberOfFirstItems;
+		totalSum += secondPrice * numberOfSecondItems;
+	}
+
+
+	@Then( "^should I pay (\\d+)$" )
+	public void shouldIPay( int expectedCost )
+	{
+		assertEquals( totalSum, expectedCost );
+	}
+
+
+	private Map<String, Price> priceList2;
+	private int sekSum;
+	private int euroSum;
+
+
+	@Given( "^the price list for an international donut shop$" )
+	public void thePriceListForAnInternationalDonutShop( List<Price> prices )
+	{
+		priceList2 = new HashMap<String, Price>();
+
+		for( Price price : prices )
+		{
+			String key = price.getProduct();
+			priceList2.put( key, price );
+		}
+	}
+
+
+	@When( "^I choose (\\d+) (.*) and (\\d+) (.*)$" )
+	public void iChooseCocoaAndDonuts( int numberOfFirstItems, String firstItem, int numberOfSecondItems, String secondItem )
+	{
+		Price firstPrice = priceList2.get( firstItem );
+		calculate( numberOfFirstItems, firstPrice );
+		Price secondPrice = priceList2.get( secondItem );
+		calculate( numberOfSecondItems, secondPrice );
+	}
+
+
+	private void calculate( int numberOfItems, Price price )
+	{
+		if( price.getCurrency().equals( "SEK" ) )
+		{
+			sekSum += numberOfItems * price.getPerUnitPrice();
+			return;
+		}
+		if( price.getCurrency().equals( "EUR" ) )
+		{
+			euroSum += numberOfItems * price.getPerUnitPrice();
+			return;
+		}
+		throw new IllegalArgumentException( "The currency is unknown" );
+	}
+
+
+	@Then( "^should I pay (\\d+) EUR and (\\d+) SEK$" )
+	public void shouldIPayEURAndSEK( int expectedEuroSum, int expectedSekSum )
+	{
+		assertEquals( euroSum, expectedEuroSum );
+		assertEquals( sekSum, expectedSekSum );
 	}
 }

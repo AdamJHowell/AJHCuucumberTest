@@ -12,10 +12,8 @@
 
 	<properties>
 		<cucumber.version>3.0.2</cucumber.version>
-		<cuke.version>1.1.7</cuke.version>
-		<gherkin.version>5.0.0</gherkin.version>
 		<junit.version>4.12</junit.version>
-		<datatable.version>1.0.3</datatable.version>
+		<datatable.version>1.1.2</datatable.version>
 		<tag-expressions.version>1.1.1</tag-expressions.version>
 		<cucumber-expressions.version>5.0.19</cucumber-expressions.version>
 	</properties>
@@ -37,13 +35,19 @@
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>datatable</artifactId>
-			<version>1.1.2</version>
+			<version>${datatable.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-core</artifactId>
+			<version>1.1.8</version>
 		</dependency>
 	</dependencies>
 
