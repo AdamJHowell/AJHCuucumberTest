@@ -9,10 +9,10 @@ import org.junit.runner.RunWith;
 
 @RunWith( Cucumber.class )
 @CucumberOptions(
-	glue = "com.adamjhowell.bdd.steps",
+	glue = "com/adamjhowell/bdd/steps",
 	features = "classpath:cucumber/calculator.feature" )
 
 
-public class RunCalculatorTests
+public class RunCalculatorTest
 {
 }

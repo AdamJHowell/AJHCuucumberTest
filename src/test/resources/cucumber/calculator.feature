@@ -34,15 +34,15 @@ Feature: Calculator
     When I modulus 27 by 5
     Then the result should be 2
 
-#  Scenario Outline: Division Data Table
-#    Given I want to perform a data table calculation
-#    When I divide this <Numerator> by <Divisor>
-#    Then the result should be <Result>
-#    Examples:
-#      | Numerator | Divisor | Result |
-#      | 100       | 2       | 50     |
-#      | 100       | 4       | 25     |
-#      | 1000      | 200     | 5      |
+  Scenario Outline: Division Data Table
+    Given I want to perform a data table calculation
+    When I divide this <Numerator> by <Divisor>
+    Then the result should be <Result>
+    Examples:
+      | Numerator | Divisor | Result |
+      | 100       | 2       | 50     |
+      | 100       | 4       | 25     |
+      | 1000      | 200     | 5      |
 
   Scenario: The sum of a list of numbers should be calculated
     Given a list of numbers

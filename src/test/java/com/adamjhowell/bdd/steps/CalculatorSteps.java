@@ -10,11 +10,13 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.cucumber.datatable.DataTable;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.lang.String.format;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -96,36 +98,36 @@ public class CalculatorSteps
 	}
 
 
-//	@Then( "^the result should be <Result>$" )
-//	public void theResultShouldBeResult()
-//	{
-//		// Write code here that turns the phrase above into concrete actions
-//		assertEquals( 1, calculator.getResult() );
-//	}
+	@Then( "^the result should be <Result>$" )
+	public void theResultShouldBeResult()
+	{
+		// Write code here that turns the phrase above into concrete actions
+		assertEquals( 1, calculator.getResult() );
+	}
 
 
-//	@Given( "^I want to perform a data table calculation$" )
-//	public void iWantToPerformADataTableCalculation( DataTable table )
-//	{
-//		if( table != null )
-//		{
-//			for( Map<Object, Object> map : table.asMaps( String.class, Integer.class ) )
-//			{
-//				Integer numerator = ( Integer )map.get( "Numerator" );
-//				Integer divisor = ( Integer )map.get( "Divisor" );
-//				Integer result = ( Integer )map.get( "Result" );
-//				System.out.println( format( "Dividing %d by %d yields %d", numerator, divisor, result ) );
-//			}
-//		}
-//	}
+	@Given( "^I want to perform a data table calculation$" )
+	public void iWantToPerformADataTableCalculation( DataTable table )
+	{
+		if( table != null )
+		{
+			for( Map<Object, Object> map : table.asMaps( String.class, Integer.class ) )
+			{
+				Integer numerator = ( Integer )map.get( "Numerator" );
+				Integer divisor = ( Integer )map.get( "Divisor" );
+				Integer result = ( Integer )map.get( "Result" );
+				System.out.println( format( "Dividing %d by %d yields %d", numerator, divisor, result ) );
+			}
+		}
+	}
 
 
-//	@When( "^I divide this (\\d+) by (\\d+)$" )
-//	public void iDivideThisNumberByNumber( int arg0, int arg1 )
-//	{
-//		// Write code here that turns the phrase above into concrete actions
-//		calculator.divide( arg0, arg1 );
-//	}
+	@When( "^I divide this (\\d+) by (\\d+)$" )
+	public void iDivideThisNumberByNumber( int arg0, int arg1 )
+	{
+		// Write code here that turns the phrase above into concrete actions
+		calculator.divide( arg0, arg1 );
+	}
 
 
 	private List<Integer> numbers;
@@ -196,7 +198,7 @@ public class CalculatorSteps
 	@Given( "^the price list for an international donut shop$" )
 	public void thePriceListForAnInternationalDonutShop( List<Price> prices )
 	{
-		priceList2 = new HashMap<String, Price>();
+		priceList2 = new HashMap<>();
 
 		for( Price price : prices )
 		{
