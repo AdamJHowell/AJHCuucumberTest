@@ -5,7 +5,7 @@ package com.adamjhowell.bdd.steps;
 // Import the class to test, based on the "Sources Root" folder.
 
 
-import com.adamjhowell.bdd.calculator.Calculator;
+import com.adamjhowell.calculator.Calculator;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

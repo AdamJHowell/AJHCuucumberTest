@@ -1,4 +1,4 @@
-package com.adamjhowell.bdd.calculator;
+package com.adamjhowell.calculator;
 // The class to be tested by Cucumber does not need to know about Cucumber at all.
 
 
