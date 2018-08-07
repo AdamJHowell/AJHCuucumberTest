@@ -6,8 +6,8 @@ Feature: Calculator
 
   Scenario: Addition
     Given I want to perform a calculation
-    When I add 3 and 4
-    Then the result should be 7
+    When I add 10 and 2
+    Then the result should be 12
 
   Scenario: Subtraction
     Given I want to perform a calculation
@@ -40,9 +40,13 @@ Feature: Calculator
     Then the result should be <Result>
     Examples:
       | Numerator | Divisor | Result |
-      | 100       | 2       | 50     |
-      | 100       | 4       | 25     |
-      | 1000      | 200     | 5      |
+      | 50        | 100     | .5     |
+      | 50        | -100    | -.5    |
+      | 50        | 101     | .495   |
+      | 50        | -101    | -.495  |
+      | 50        | 1       | 50     |
+      | 50        | -1      | -50    |
+      | 50        | 0       | NaN    |
 
   Scenario: The sum of a list of numbers should be calculated
     Given a list of numbers

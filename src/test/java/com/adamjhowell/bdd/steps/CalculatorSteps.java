@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static java.lang.String.format;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -116,7 +115,6 @@ public class CalculatorSteps
 				Integer numerator = ( Integer )map.get( "Numerator" );
 				Integer divisor = ( Integer )map.get( "Divisor" );
 				Integer result = ( Integer )map.get( "Result" );
-				System.out.println( format( "Dividing %d by %d yields %d", numerator, divisor, result ) );
 			}
 		}
 	}

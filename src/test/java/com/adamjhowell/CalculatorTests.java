@@ -30,8 +30,8 @@ public class CalculatorTests
 	@Test
 	public void sum()
 	{
-		calculator.sum( value1, value2 );
-		assertEquals( calculator.getResult(), 12 );
+		calculator.sum( 10, 2 );
+		assertEquals( 12, calculator.getResult() );
 	}
 
 
@@ -39,7 +39,7 @@ public class CalculatorTests
 	public void product()
 	{
 		calculator.product( value1, value2 );
-		assertEquals( calculator.getResult(), 20 );
+		assertEquals( 20, calculator.getResult() );
 	}
 
 
@@ -47,7 +47,7 @@ public class CalculatorTests
 	public void divide()
 	{
 		calculator.divide( value1, value2 );
-		assertEquals( calculator.getResult(), 5 );
+		assertEquals( 5, calculator.getResult() );
 	}
 
 
@@ -55,7 +55,7 @@ public class CalculatorTests
 	public void subtract()
 	{
 		calculator.subtract( value1, value2 );
-		assertEquals( calculator.getResult(), 8 );
+		assertEquals( 8, calculator.getResult() );
 	}
 
 
@@ -63,7 +63,7 @@ public class CalculatorTests
 	public void mod()
 	{
 		calculator.mod( value1, value2 );
-		assertEquals( calculator.getResult(), 0 );
+		assertEquals( 0, calculator.getResult() );
 	}
 
 
@@ -71,6 +71,6 @@ public class CalculatorTests
 	public void power()
 	{
 		calculator.power( value1, value2 );
-		assertEquals( calculator.getResult(), 100 );
+		assertEquals( 100, calculator.getResult() );
 	}
 }
